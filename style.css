@@ -1,0 +1,46 @@
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+  margin: 2px;
+  font-size: 66pt;
+  cursor: default !important;
+  border-radius: 0px;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+
+.board {
+  width: 462px !important;
+  height: 462px !important;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reset {
+  margin-top: 25px;
+}
+
+.status {
+  margin-top: 3px;
+  text-align: center;
+  color: black;
+  border: 2px solid grey;
+  border-radius: 20px;
+}
