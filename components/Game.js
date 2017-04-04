@@ -11,7 +11,8 @@ class Game extends React.Component {
     super(props);
     this.state = {
       board: [null, null, null, null, null, null, null, null, null],
-      turn: 'X'
+      turn: 'X',
+      isComplete: false
     };
 
     this.handleReset = this.handleReset.bind(this);
@@ -23,7 +24,8 @@ class Game extends React.Component {
     this.setState(
       {
         board: [null, null, null, null, null, null, null, null, null],
-        turn: 'X'
+        turn: 'X',
+        isComplete: false
       }
     )
   }
@@ -37,6 +39,11 @@ class Game extends React.Component {
       board: newBoard,
       turn:  newTurn
     })
+    if (this.getWinner()) {
+      this.setState({
+        isComplete: true
+      })
+    }
   }
 
   getWinner () {
@@ -56,11 +63,12 @@ class Game extends React.Component {
   render () {
     return (
 
-      <div className='game'>
-        <Board className='board' board={this.state.board} onClick={this.handleClick}/>
-        <button className='game__reset' onClick={this.handleReset}>Reset</button>
+      <div className='game board'>
+        <Board isComplete={this.state.isComplete} board={this.state.board} onClick={this.handleClick}/>
+
 
         {this.getWinner() || this.isComplete() ? <Status winner={this.getWinner()} /> : null }
+        <button className='game__reset btn btn-danger center-block reset' onClick={this.handleReset}>Reset</button>
       </div>
     );
   }

@@ -11,12 +11,19 @@ class Field extends React.Component {
   }
   render () {
     const { player, onClick } = this.props;
-    // debugger
-    return (
+    const buttonStyle = {
 
-      <button className='field' disabled={!!this.props.player} onClick={this.handleClick} >
+}
+    return (
+      this.props.isComplete ? (
+        <button className='btn btn-sq-lg' disabled='true' onClick={this.handleClick} >
+          {this.props.player}
+        </button>
+      ) : (
+      <button className='btn btn-sq-lg' disabled={!!this.props.player} onClick={this.handleClick} >
         {this.props.player}
       </button>
+    )
     );
   }
 }
