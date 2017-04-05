@@ -20,3 +20,5 @@ const solutions = [
 ];
 
 module.exports = solutions;
+
+//Oh god.
