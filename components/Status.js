@@ -2,10 +2,9 @@ const React = require('react');
 
 class Status extends React.Component {
   render () {
-    const { winner } = this.props;
+    let winner = this.props.winner
     return (
-      <div>
-      </div>
+      <div className='status'>{!winner ? 'Tie' : `${winner} wins`}</div>
     );
   }
 }
