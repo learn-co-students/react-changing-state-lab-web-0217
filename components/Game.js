@@ -53,27 +53,33 @@ class Game extends React.Component {
    // return row && row[0]
 
     let board = this.state.board
-    solutions.map((row) => {
+    let x = solutions.reduce((tie, row) => {
       if ((board[row[0]] !== null) && (board[row[0]] === board[row[1]]) && (board[row[0]] === board[row[2]])) { 
         return board[row[0]]
+      } else {
+        return tie
       }
-    })
+    }, undefined)
+
+    return x
   }
 
   isComplete () {
-    this.state.board.map((spot) => {
+    let x = this.state.board.reduce((firstArg, spot) => {
       if (spot === null) {
         return false
+      } else {
+        return true
       }
     })
-    return true
+    return x
   }
 
   render () {
     return (
       <div className="game">
         <Board board={this.state.board} onClick={this.handleClick} />
-        {this.isComplete() ? <Status winner={winner} /> : null}
+        {this.isComplete() ? <Status winner={this.getWinner()} /> : null}
         <button className="game__reset" onClick={this.handleReset}>Reset</button>
       </div>
     )
