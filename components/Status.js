@@ -1,13 +1,14 @@
-const React = require('react');
+const React = require('react')
 
 class Status extends React.Component {
   render () {
-    const { winner } = this.props;
+    const { winner } = this.props
     return (
-      <div>
+      <div className="status">
+      	{winner === undefined ? "Tie": `${winner} wins`} 
       </div>
-    );
+    )
   }
 }
 
-module.exports = Status;
+module.exports = Status
