@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this lab, you'll implement a Tic Tac Toe game where you will respond to state changes in React amd rendering React components. 
+In this lab, you'll implement a Tic Tac Toe game where you will respond to state changes in React amd rendering React components.
 
 ## Tic-tac-toe
 
