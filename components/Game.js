@@ -17,6 +17,7 @@ class Game extends React.Component {
     this.getWinner = this.getWinner.bind(this);
     this.wonGame = this.wonGame.bind(this);
     this.isComplete = this.isComplete.bind(this);
+    this.resetGame = this.resetGame.bind(this)
 
   }
 
@@ -25,43 +26,51 @@ class Game extends React.Component {
   }
 
   handleClick (i, ev) {
+    ev.preventDefault()
     let newBoard = this.state.board
     newBoard[i] = this.state.turn
     let nextTurn = (this.state.turn === "X" ? "O" : "X")
     this.setState({
       board: newBoard,
-      turn: nextTurn
+      turn: nextTurn,
     })
-    if (this.isComplete()){
-      this.getWinner()
-    }
   }
 
   getWinner () {
+    if (this.wonGame()) {
+      return this.state.board[this.wonGame()[0]]
+    }
+    return  undefined
   }
 
   wonGame () {
     return solutions.find((solution) => {
       return this.state.board[solution[0]] === this.state.board[solution[1]] && this.state.board[solution[0]] === this.state.board[solution[2]] && this.state.board[solution[2]] !== null
-      // FIX WINS OF BLANK SPACES
     })
   }
 
   isComplete () {
     if (this.wonGame()) {
-      debugger
-      this.state[this.wonGame()[0]]
       return true
-    } else if (false){
+    } else if ((this.state.board.filter((field) => {return field === "X" || field === "O" })).length === 9){
       return true
     }
     return false
+  }
+
+  resetGame(event) {
+    event.preventDefault()
+    this.setState({
+      board: [null, null, null, null, null, null, null, null, null]
+    })
   }
 
   render () {
     return (
       <div className="game">
         <Board className="board" board={this.state.board} turn={this.state.turn} onClick={this.handleClick}/>
+        { this.isComplete() ? <Status winner={this.getWinner()} /> : null }
+        <button className="game__reset" name="Reset" onClick={this.resetGame}>Reset</button>
       </div>
     );
   }
