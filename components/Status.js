@@ -5,6 +5,7 @@ class Status extends React.Component {
     const { winner } = this.props;
     return (
       <div className="status">
+        {winner ? `${winner} wins`: 'Tie'}
       </div>
     );
   }
